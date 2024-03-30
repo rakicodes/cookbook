@@ -28,6 +28,7 @@ const Card = ({ image, name, id, ingredients }) => {
 				<Typography
 					variant="h6"
 					text={name}
+					noWrap={true}
 				/>
 				<Typography
 					variant="body1"
