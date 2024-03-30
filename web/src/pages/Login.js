@@ -32,13 +32,13 @@ const Login = () => {
 
 	useEffect(() => {
 		if (isSuccess) {
-			navigate("/recipes");
+			navigate("/");
 		}
 	}, [isSuccess, navigate])
 
 	useEffect(() => {
 		if (data) {
-			navigate("/recipes");
+			navigate("/");
 		}
 	}, [data, navigate])
 

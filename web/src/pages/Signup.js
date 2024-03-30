@@ -32,14 +32,14 @@ const Signup = () => {
 		}
 
 		if (isSuccess) {
-			navigate("/recipes");
+			navigate("/");
 		}
 
 	}, [setOpen, navigate, isError, isSuccess, submitted, dispatch]);
 
 	useEffect(() => {
 		if (data) {
-			navigate("/recipes");
+			navigate("/");
 		}
 	}, [data, navigate])
 
