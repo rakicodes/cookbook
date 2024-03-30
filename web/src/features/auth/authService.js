@@ -1,7 +1,7 @@
 import axios from "axios";
 const { REACT_APP_SERVER } = process.env;
 
-const API_URL = `${REACT_APP_SERVER}/api/recipes`;
+const API_URL = `${REACT_APP_SERVER}/api/users`;
 
 const createUser = async (userData) => {
 	console.log("sending info to create user to db", userData);
