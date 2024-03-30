@@ -1,9 +1,9 @@
 import { Typography as MuiTypography } from "@mui/material";
 
-const Typography = ({ text, variant, align }) => {
+const Typography = ({ text, variant, align, noWrap=false }) => {
   return (
     <>
-        <MuiTypography variant={variant} align={align}>{text}</MuiTypography>
+        <MuiTypography noWrap={noWrap} variant={variant} align={align}>{text}</MuiTypography>
     </>
   )
 }

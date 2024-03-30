@@ -19,7 +19,7 @@ const RecipesTemplate = ({
 				display: "flex",
 				justifyContent: "center",
 				pt: 4,
-				px: 2
+				px: 2,
 			}}>
 			<Grid
 				container
@@ -29,6 +29,7 @@ const RecipesTemplate = ({
 				}}>
 				<Grid
 					item
+					xs={12}
 					sx={{
 						justifyContent: "center",
 					}}>
@@ -56,34 +57,31 @@ const RecipesTemplate = ({
 								</Grid>
 							</Grid>
 						</Grid>
-
-						<Grid
-							item
-							xs={12}>
-							<Box sx={{ pt: 2 }}>
-								<Typography
-									variant="h2"
-									text={
-										category
-											? `Showing ${category} recipes`
-											: searchParams
-											? `Showing ${searchParams} results`
-											: "Showing all recipes"
-									}
-								/>
-							</Box>
-						</Grid>
-						<Grid
-							item
-							xs={12}>
-							<Box
-								sx={{
-									pt: 1,
-								}}>
-								<CardsContainer data={recipes} message="Sorry recipe not found!" />
-							</Box>
-						</Grid>
 					</Grid>
+				</Grid>
+				<Grid
+					item
+					xs={12}>
+					<Box sx={{ pt: 2 }}>
+						<Typography
+							variant="h2"
+							text={
+								category
+									? `Showing ${category} recipes`
+									: searchParams
+									? `Showing ${searchParams} results`
+									: "Showing all recipes"
+							}
+						/>
+					</Box>
+				</Grid>
+				<Grid
+					item
+					xs={12}>
+					<CardsContainer
+						data={recipes}
+						message="Sorry recipe not found!"
+					/>
 				</Grid>
 			</Grid>
 		</Box>

@@ -17,13 +17,14 @@ const Card = ({ image, name, id, ingredients }) => {
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "space-between",
+				width: "100%"
 			}}>
 			<CardMedia
 				image={image}
 				title={name}
 				sx={{ height: 240 }}
 			/>
-			<CardContent>
+			<CardContent sx={{ width: "100% "}}>
 				<Typography
 					variant="h6"
 					text={name}
@@ -31,6 +32,7 @@ const Card = ({ image, name, id, ingredients }) => {
 				<Typography
 					variant="body1"
 					text={ingredients.join(", ")}
+					noWrap={true}
 				/>
 			</CardContent>
 			<CardActions sx={{ alignSelf: "end" }}>
