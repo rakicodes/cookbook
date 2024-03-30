@@ -9,7 +9,7 @@ const ProfileTemplate = ({ name, recipes, handleNavigate, isUserProfile }) => {
 			sx={{
 				display: "flex",
 				justifyContent: "center",
-				pt: 2
+				p: 2,
 			}}>
 			<Grid
 				container

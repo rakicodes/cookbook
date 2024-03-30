@@ -23,7 +23,8 @@ const EditRecipeTemplate = ({
 		<Box
 			sx={{
 				display: "flex",
-				justifyContent: "center"
+				justifyContent: "center",
+				px: 2
 			}}
 		>
 			<Grid

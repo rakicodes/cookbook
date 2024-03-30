@@ -10,7 +10,8 @@ const SignupTemplate = ({ name, email, password, handleSubmit }) => {
 			minHeight: "90vh",
 			display: "flex",
 			justifyContent: "center",
-			alignItems: "center"
+			alignItems: "center",
+			px: 2
 		}}>
 			<Grid
 				container
