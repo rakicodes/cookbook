@@ -7,6 +7,7 @@ const SearchForm = ({ name="search", value, handleChange, handleAction }) => {
 		<Box
 			sx={{
 				display: "flex",
+				pt: 1
 			}}
 		>
 			<form

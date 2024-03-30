@@ -18,8 +18,7 @@ const HomeHero = ({ handleNavigate, searchValue, handleSearchChange }) => {
 				/>
 				<Typography
 					variant="body1"
-					text="Lorem ipsum dolor sit amet, consectetur adipiscing. Donec vitae ante
-					dict sit amet et justo."
+					text="Welcome to cookbook, where culinary creativity meets simplicity! From quick weeknight dinners to indulgent desserts, we've got you covered. Join us on a flavorful journey as we celebrate the joy of cooking and sharing delicious meals with loved ones!"
 				/>
 				<SearchForm
 					fullWidth="100%"
