@@ -48,7 +48,7 @@ const SearchByIngredients = () => {
 					recipes={ingredients ? data : []}
 					searchValue={searchValue}
 					handleSearchChange={(e) => setSearchValue(e.target.value)}
-					
+					isSearch={ingredients?.length > 0}
 				/>
 			)}
 		</>

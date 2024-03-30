@@ -8,6 +8,7 @@ const SearchByIngredientsTemplate = ({
 	recipes,
 	searchValue,
 	handleSearchChange,
+	isSearch
 }) => {
 	return (
 		<Box
@@ -47,7 +48,7 @@ const SearchByIngredientsTemplate = ({
 					item
 					xs={12}>
 					<Box sx={{ pt: 1 }}>
-						<CardsContainer data={recipes} message="Sorry no recipe found!"/>
+						<CardsContainer data={recipes} message={isSearch ? `Sorry no recipe found!` : ""}/>
 					</Box>
 				</Grid>
 			</Grid>
