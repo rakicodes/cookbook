@@ -37,12 +37,12 @@ const addRecipe = asyncHandler(async (req, res) => {
 			res.status(400).json("Please add how to make this recipe");
 			return;
 		}
-
+		console.log(JSON.parse(ingredients))
 		const recipe = await Recipe.create({
 			user: req.user.id,
 			name: name,
-			ingredients: ingredients.split(","),
-			steps: steps.split(","),
+			ingredients: JSON.parse(ingredients),
+			steps: JSON.parse(steps),
 			likes: 0,
 			category: category,
 			image: cloudinaryImg.secure_url,

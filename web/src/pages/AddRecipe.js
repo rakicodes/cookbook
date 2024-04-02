@@ -60,8 +60,8 @@ const AddRecipe = () => {
 		}
 
 		if (ingredients.length) {
-			console.log("ingredients append");
-			data.append("ingredients", ingredients);
+			console.log("ingredients append", ingredients);
+			data.append("ingredients", JSON.stringify(ingredients));
 		}
 
 		if (!ingredients.length) {
@@ -69,8 +69,8 @@ const AddRecipe = () => {
 		}
 
 		if (steps.length) {
-			console.log("steps append");
-			data.append("steps", steps);
+			console.log("steps append", steps);
+			data.append("steps", JSON.stringify(steps));
 		}
 
 		if (!steps.length) {
