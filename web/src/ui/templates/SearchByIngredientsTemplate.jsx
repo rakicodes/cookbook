@@ -15,7 +15,8 @@ const SearchByIngredientsTemplate = ({
 			sx={{
 				display: "flex",
 				justifyContent: "center",
-				p: 4,
+				px: 2,
+				py: 4
 			}}>
 			<Grid
 				container

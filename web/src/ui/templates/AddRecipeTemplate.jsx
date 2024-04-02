@@ -24,7 +24,8 @@ const AddRecipeTemplate = ({
 			sx={{
 				display: "flex",
 				justifyContent: "center",
-				px: 2
+				px: 2,
+				py: 4
 			}}
 		>
 			<Grid
