@@ -27,7 +27,7 @@ const Recipe = () => {
 
 	const handleDelete = () => {
 		dispatch(deleteRecipe(id));
-		navigate("/recipes");
+		navigate(`/profile/${user._id}`);
 	};
 
 	const handleEdit = () => {
