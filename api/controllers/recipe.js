@@ -185,8 +185,8 @@ const editRecipe = asyncHandler(async (req, res) => {
 
 		editedValues = {
 			name,
-			ingredients: ingredients.split(","),
-			steps: steps.split(","),
+			ingredients: JSON.parse(ingredients),
+			steps: JSON.parse(steps),
 			category,
 			...editedValues,
 		};

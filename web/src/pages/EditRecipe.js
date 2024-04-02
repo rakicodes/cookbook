@@ -82,8 +82,8 @@ const EditRecipe = () => {
 		setSubmitted(true);
 		const data = new FormData();
 		data.append("name", editedName);
-		data.append("ingredients", editedIngredients);
-		data.append("steps", editedSteps);
+		data.append("ingredients", JSON.stringify(editedIngredients));
+		data.append("steps", JSON.stringify(editedSteps));
 		data.append("category", editedCategory);
 		if (editedImage) {
 			console.log(editedImage)
