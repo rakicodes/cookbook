@@ -12,6 +12,9 @@ import DrawerList from "../molecules/Drawer/DrawerList";
 import DrawerItem from "../molecules/Drawer/DrawerItem";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
+import logoLight from "../images/cookbook-logo-light.png";
+import logoDark from "../images/cookbook-logo-dark.png";
+
 
 const Header = () => {
 	const { toggleThemeMode, mode } = useContext(ThemeModeContext);
@@ -53,16 +56,20 @@ const Header = () => {
 					sx={{
 						alignItems: "center",
 					}}>
-					<Grid item>
+					<Grid item xs={3}>
 						<Link
 							component={RouterLink}
 							underline="none"
 							to="/"
 							color="secondary">
-							<MenuBookIcon />
+							<img className="logo" src={mode==='light' ? logoLight : logoDark} alt="Logo" />
 						</Link>
 					</Grid>
-					<Grid item>
+					<Grid 
+						item 
+						sx={{
+							display: { xs: "none", md: "block" },
+						}}>
 						<Link
 							component={RouterLink}
 							underline="hover"
@@ -213,6 +220,10 @@ const Header = () => {
 								data
 									? [
 											<DrawerItem
+												text="Recipes"
+												link="/recipes"
+											/>,
+											<DrawerItem
 												text="Search By Ingredients"
 												link="/searchByIngredients"
 											/>,
@@ -231,6 +242,10 @@ const Header = () => {
 											/>,
 									  ]
 									: [
+											<DrawerItem
+												text="Recipes"
+												link="/recipes"
+											/>,
 											<DrawerItem
 												text="Search By Ingredients"
 												link="/searchByIngredients"
