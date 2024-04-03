@@ -94,11 +94,9 @@ const getRecipes = asyncHandler(async (req, res) => {
 			const recipes = await Recipe.find({ $text: { $search: search } });
 			res.status(200).json(recipes);
 		} else if (ingredients) {
-			console.log(ingredients.split(","));
-
 			const recipes = await Recipe.find({
 				ingredients: {
-					$all: ingredients.split(",").map((ingredient) => ingredient.trim()),
+					$all: ingredients.split(",").map((ingredient) => new RegExp(ingredient.trim(), "i")),
 				},
 			});
 			res.status(200).json(recipes);
