@@ -1,10 +1,12 @@
-import { IconButton as MuiIconButton } from "@mui/material"
+import { IconButton as MuiIconButton } from "@mui/material";
 const IconButton = ({ icon, handleAction, name }) => {
   return (
     <>
-      <MuiIconButton onClick={handleAction} aria-label={name}>{icon}</MuiIconButton>
+      <MuiIconButton onClick={handleAction} aria-label={name}>
+        {icon}
+      </MuiIconButton>
     </>
-  )
-}
+  );
+};
 
-export default IconButton
+export default IconButton;

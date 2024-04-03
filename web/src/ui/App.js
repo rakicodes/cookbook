@@ -7,41 +7,41 @@ import { getDesignTokens } from "./theme/theme";
 import theme from "./theme/theme";
 
 export const ThemeModeContext = createContext({
-	toggleThemeMode: () => {},
-	mode: null,
+  toggleThemeMode: () => {},
+  mode: null,
 });
 
 const initialMode = () => {
-	if (!localStorage.getItem("theme")) {
-		localStorage.setItem("theme", "light");
-	}
-	return localStorage.getItem("theme");
+  if (!localStorage.getItem("theme")) {
+    localStorage.setItem("theme", "light");
+  }
+  return localStorage.getItem("theme");
 };
 
 const App = () => {
-	const [mode, setMode] = useState(initialMode);
+  const [mode, setMode] = useState(initialMode);
 
-	const toggleThemeMode = () => {
-		setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-		localStorage.setItem("theme", mode === "light" ? "dark" : "light");
-	};
+  const toggleThemeMode = () => {
+    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    localStorage.setItem("theme", mode === "light" ? "dark" : "light");
+  };
 
-	const userTheme = useMemo(() => {
-		const { palette } = getDesignTokens(mode);
-		return createTheme({
-			palette,
-			...theme,
-		});
-	}, [mode]);
+  const userTheme = useMemo(() => {
+    const { palette } = getDesignTokens(mode);
+    return createTheme({
+      palette,
+      ...theme,
+    });
+  }, [mode]);
 
-	return (
-		<ThemeModeContext.Provider value={{ toggleThemeMode, mode }}>
-			<ThemeProvider theme={userTheme}>
-				<CssBaseline />
-				<RouterProvider router={router} />
-			</ThemeProvider>
-		</ThemeModeContext.Provider>
-	);
+  return (
+    <ThemeModeContext.Provider value={{ toggleThemeMode, mode }}>
+      <ThemeProvider theme={userTheme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </ThemeModeContext.Provider>
+  );
 };
 
 export default App;

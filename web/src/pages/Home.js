@@ -10,61 +10,61 @@ import { useNavigate } from "react-router-dom";
 const categories = ["breakfast", "lunch/dinner", "snacks", "desserts"];
 
 function Home() {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const [recipesByCategory, setRecipesByCategory] = useState({});
-	const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [recipesByCategory, setRecipesByCategory] = useState({});
+  const [search, setSearch] = useState("");
 
-	const { data, isLoading, isError, isSuccess, message } = useSelector(
-		(state) => state.recipes
-	);
+  const { data, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.recipes,
+  );
 
-	useEffect(() => {
-		dispatch(getRecipes());
+  useEffect(() => {
+    dispatch(getRecipes());
 
-		return () => {
-			dispatch(reset())
-		}
-	}, [dispatch]);
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
 
-	useEffect(() => {
-		for (let i = 0; i < categories.length; i++) {
-			setRecipesByCategory((prev) => ({
-				...prev,
-				[categories[i]]: data
-					.filter((recipe) => recipe.category === categories[i])
-					.slice(0, 3),
-			}));
-		}
-	}, [data]);
+  useEffect(() => {
+    for (let i = 0; i < categories.length; i++) {
+      setRecipesByCategory((prev) => ({
+        ...prev,
+        [categories[i]]: data
+          .filter((recipe) => recipe.category === categories[i])
+          .slice(0, 3),
+      }));
+    }
+  }, [data]);
 
-	const handleNavigate = (url) => {
-		navigate(url);
-	};
+  const handleNavigate = (url) => {
+    navigate(url);
+  };
 
-	if (isError) {
-		return (
-			<ErrorPageTemplate
-				message={`Sorry it looks like something went wrong. ${message}`}
-			/>
-		);
-	}
+  if (isError) {
+    return (
+      <ErrorPageTemplate
+        message={`Sorry it looks like something went wrong. ${message}`}
+      />
+    );
+  }
 
-	return (
-		<>
-			<Header />
-			{isLoading ? (
-				<LoadingTemplate />
-			) : (
-				<HomepageTemplate
-					recipes={recipesByCategory}
-					handleNavigate={handleNavigate}
-					searchValue={search}
-					handleSearchChange={(e) => setSearch(e.target.value)}
-				/>
-			)}
-		</>
-	);
+  return (
+    <>
+      <Header />
+      {isLoading ? (
+        <LoadingTemplate />
+      ) : (
+        <HomepageTemplate
+          recipes={recipesByCategory}
+          handleNavigate={handleNavigate}
+          searchValue={search}
+          handleSearchChange={(e) => setSearch(e.target.value)}
+        />
+      )}
+    </>
+  );
 }
 
 export default Home;

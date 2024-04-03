@@ -11,43 +11,47 @@ import Profile from "./pages/Profile";
 import SearchByIngredients from "./pages/SearchByIngredients";
 
 const router = createBrowserRouter([
-	{
-		errorElement: <ErrorPageTemplate message={`Sorry the page you're looking for doesn't exist.`}/>,
-		path: "/",
-		element: <Home />,
-	},
-	{
-		path: "/login",
-		element: <Login />,
-	},
-	{
-		path: "/signup",
-		element: <Signup />,
-	},
-	{
-		path: "/recipes",
-		element: <Recipes />,
-	},
-	{
-		path: "/recipe/:id",
-		element: <Recipe />,
-	},
-	{
-		path: "/addrecipe",
-		element: <AddRecipe />,
-	},
-	{
-		path: "/editrecipe/:id",
-		element: <EditRecipe />,
-	},
-	{
-		path: "/profile/:id",
-		element: <Profile />,
-	},
-	{
-		path: "/searchByIngredients",
-		element: <SearchByIngredients />,
-	},
+  {
+    errorElement: (
+      <ErrorPageTemplate
+        message={`Sorry the page you're looking for doesn't exist.`}
+      />
+    ),
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/recipes",
+    element: <Recipes />,
+  },
+  {
+    path: "/recipe/:id",
+    element: <Recipe />,
+  },
+  {
+    path: "/addrecipe",
+    element: <AddRecipe />,
+  },
+  {
+    path: "/editrecipe/:id",
+    element: <EditRecipe />,
+  },
+  {
+    path: "/profile/:id",
+    element: <Profile />,
+  },
+  {
+    path: "/searchByIngredients",
+    element: <SearchByIngredients />,
+  },
 ]);
 
 export default router;

@@ -9,66 +9,66 @@ import ErrorPageTemplate from "../ui/templates/ErrorPageTemplate";
 import Header from "../ui/organisms/Header";
 
 const Recipe = () => {
-	const { id } = useParams();
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const [isUserRecipe, setIsUserRecipe] = useState(false);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isUserRecipe, setIsUserRecipe] = useState(false);
 
-	const { data, isLoading, isError, isSuccess, message } = useSelector(
-		(state) => state.recipe
-	);
-	const { data: user } = useSelector((state) => state.auth);
+  const { data, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.recipe,
+  );
+  const { data: user } = useSelector((state) => state.auth);
 
-	useEffect(() => {
-		return () => {
-			dispatch(reset())
-		}
-	}, [dispatch])
+  useEffect(() => {
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
 
-	const handleDelete = () => {
-		dispatch(deleteRecipe(id));
-		navigate(`/profile/${user._id}`);
-	};
+  const handleDelete = () => {
+    dispatch(deleteRecipe(id));
+    navigate(`/profile/${user._id}`);
+  };
 
-	const handleEdit = () => {
-		navigate(`/editrecipe/${id}`);
-	};
+  const handleEdit = () => {
+    navigate(`/editrecipe/${id}`);
+  };
 
-	useEffect(() => {
-		dispatch(getRecipe(id));
-	}, [id, dispatch]);
+  useEffect(() => {
+    dispatch(getRecipe(id));
+  }, [id, dispatch]);
 
-	useEffect(() => {
-		setIsUserRecipe(user && user._id === data.user);
-	}, [user, data]);
+  useEffect(() => {
+    setIsUserRecipe(user && user._id === data.user);
+  }, [user, data]);
 
-	if (isError) {
-		return <ErrorPageTemplate message={message} />;
-	}
+  if (isError) {
+    return <ErrorPageTemplate message={message} />;
+  }
 
-	if (isSuccess) {
-		const { name, category, ingredients, steps, image } = data;
+  if (isSuccess) {
+    const { name, category, ingredients, steps, image } = data;
 
-		return (
-			<>
-				<Header />
-				{isLoading ? (
-					<LoadingTemplate />
-				) : (
-					<RecipeTemplate
-						name={name}
-						imageUrl={image}
-						category={category}
-						ingredients={ingredients}
-						steps={steps}
-						handleEdit={handleEdit}
-						handleDelete={handleDelete}
-						isUserRecipe={isUserRecipe}
-					/>
-				)}
-			</>
-		);
-	}
+    return (
+      <>
+        <Header />
+        {isLoading ? (
+          <LoadingTemplate />
+        ) : (
+          <RecipeTemplate
+            name={name}
+            imageUrl={image}
+            category={category}
+            ingredients={ingredients}
+            steps={steps}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+            isUserRecipe={isUserRecipe}
+          />
+        )}
+      </>
+    );
+  }
 };
 
 export default Recipe;

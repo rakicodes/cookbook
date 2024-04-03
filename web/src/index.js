@@ -7,14 +7,15 @@ import store from "./app/store";
 import App from "./ui/App";
 import ErrorPageTemplate from "./ui/templates/ErrorPageTemplate";
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<React.StrictMode>
-		<ErrorBoundary fallback={<ErrorPageTemplate message="Sorry something went wrong" />}>
-			<Provider store={store}>
-				<App />
-			</Provider>
-		</ErrorBoundary>
-	</React.StrictMode>
+  <React.StrictMode>
+    <ErrorBoundary
+      fallback={<ErrorPageTemplate message="Sorry something went wrong" />}
+    >
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ErrorBoundary>
+  </React.StrictMode>,
 );

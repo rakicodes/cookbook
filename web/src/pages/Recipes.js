@@ -11,55 +11,55 @@ const categories = ["breakfast", "lunch/dinner", "snacks", "desserts"];
 // recipes refresh doesn't refresh to all recipes when going from category to all
 
 const Recipes = () => {
-	const dispatch = useDispatch();
-	const [searchParams, setSearchParams] = useSearchParams();
-	const [category, setCategory] = useState(searchParams.get("category"));
-	const [search, setSearch] = useState(searchParams.get("search"));
-	const [inputSearch, setInputSearch] = useState("");
+  const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [category, setCategory] = useState(searchParams.get("category"));
+  const [search, setSearch] = useState(searchParams.get("search"));
+  const [inputSearch, setInputSearch] = useState("");
 
-	const { data, isLoading, isError, isSuccess, message } = useSelector(
-		(state) => state.recipes
-	);
-	useEffect(() => {
-		dispatch(getRecipes({ category, search }));
+  const { data, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.recipes,
+  );
+  useEffect(() => {
+    dispatch(getRecipes({ category, search }));
 
-		return () => {
-			dispatch(reset())
-		}
-	}, [dispatch, category, search]);
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch, category, search]);
 
-	useEffect(() => {
-		setCategory(searchParams.get("category"));
-		setSearch(searchParams.get("search"));
-	}, [searchParams]);
+  useEffect(() => {
+    setCategory(searchParams.get("category"));
+    setSearch(searchParams.get("search"));
+  }, [searchParams]);
 
-	if (isError) {
-		return (
-			<ErrorPageTemplate
-				message={`Sorry it looks like something went wrong. ${message}`}
-			/>
-		);
-	}
+  if (isError) {
+    return (
+      <ErrorPageTemplate
+        message={`Sorry it looks like something went wrong. ${message}`}
+      />
+    );
+  }
 
-	if (isSuccess) {
-		return (
-			<>
-				<Header />
-				{isLoading ? (
-					<LoadingTemplate />
-				) : (
-					<RecipesTemplate
-						recipes={data}
-						category={category}
-						categories={categories}
-						searchParams={search}
-						search={inputSearch}
-						handleSearchChange={(e) => setInputSearch(e.target.value)}
-					/>
-				)}
-			</>
-		);
-	}
+  if (isSuccess) {
+    return (
+      <>
+        <Header />
+        {isLoading ? (
+          <LoadingTemplate />
+        ) : (
+          <RecipesTemplate
+            recipes={data}
+            category={category}
+            categories={categories}
+            searchParams={search}
+            search={inputSearch}
+            handleSearchChange={(e) => setInputSearch(e.target.value)}
+          />
+        )}
+      </>
+    );
+  }
 };
 
 export default Recipes;

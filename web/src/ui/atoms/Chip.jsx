@@ -1,8 +1,6 @@
-import { Chip as MuiChip } from "@mui/material"
+import { Chip as MuiChip } from "@mui/material";
 const Chip = ({ text, variant }) => {
-  return (
-    <MuiChip variant={variant} label={text}/>
-  )
-}
+  return <MuiChip variant={variant} label={text} />;
+};
 
-export default Chip
+export default Chip;

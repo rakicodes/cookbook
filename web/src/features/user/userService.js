@@ -1,15 +1,15 @@
 import axios from "axios";
 const { REACT_APP_SERVER } = process.env;
 
-const API_URL = `${REACT_APP_SERVER}/api/users`
+const API_URL = `${REACT_APP_SERVER}/api/users`;
 
 const getUser = async (id) => {
-	const response = await axios.get(`${API_URL}/${id}`);
-	return response.data;
+  const response = await axios.get(`${API_URL}/${id}`);
+  return response.data;
 };
 
 const userService = {
-	getUser,
+  getUser,
 };
 
 export default userService;

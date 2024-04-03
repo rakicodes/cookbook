@@ -8,51 +8,51 @@ import LoadingTemplate from "../ui/templates/LoadingTemplate";
 import ErrorPageTemplate from "../ui/templates/ErrorPageTemplate";
 
 const SearchByIngredients = () => {
-	const dispatch = useDispatch();
-	const [searchParams, setSearchParams] = useSearchParams();
-	const [ingredients, setIngredients] = useState(
-		searchParams.get("ingredients")
-	);
-	const [searchValue, setSearchValue] = useState("");
+  const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [ingredients, setIngredients] = useState(
+    searchParams.get("ingredients"),
+  );
+  const [searchValue, setSearchValue] = useState("");
 
-	const { data, isLoading, isError, isSuccess, message } = useSelector(
-		(state) => state.recipes
-	);
+  const { data, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.recipes,
+  );
 
-	useEffect(() => {
-		dispatch(getRecipes({ ingredients }));
+  useEffect(() => {
+    dispatch(getRecipes({ ingredients }));
 
-		return () => {
-			dispatch(reset())
-		}
-	}, [dispatch, ingredients]);
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch, ingredients]);
 
-	useEffect(() => {
-		setIngredients(searchParams.get("ingredients"));
-	}, [searchParams]);
+  useEffect(() => {
+    setIngredients(searchParams.get("ingredients"));
+  }, [searchParams]);
 
-	if (isError) {
-		return (
-			<ErrorPageTemplate
-				message={`Sorry it looks like something went wrong. ${message}`}
-			/>
-		);
-	}
-	return (
-		<>
-			<Header />
-			{isLoading ? (
-				<LoadingTemplate />
-			) : (
-				<SearchByIngredientsTemplate
-					recipes={ingredients ? data : []}
-					searchValue={searchValue}
-					handleSearchChange={(e) => setSearchValue(e.target.value)}
-					isSearch={ingredients?.length > 0}
-				/>
-			)}
-		</>
-	);
+  if (isError) {
+    return (
+      <ErrorPageTemplate
+        message={`Sorry it looks like something went wrong. ${message}`}
+      />
+    );
+  }
+  return (
+    <>
+      <Header />
+      {isLoading ? (
+        <LoadingTemplate />
+      ) : (
+        <SearchByIngredientsTemplate
+          recipes={ingredients ? data : []}
+          searchValue={searchValue}
+          handleSearchChange={(e) => setSearchValue(e.target.value)}
+          isSearch={ingredients?.length > 0}
+        />
+      )}
+    </>
+  );
 };
 
 export default SearchByIngredients;
